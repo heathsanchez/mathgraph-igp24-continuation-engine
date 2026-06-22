@@ -1,6 +1,6 @@
 # MathGraph IGP24 Continuation Engine
 
-MathGraph IGP24 v101 is a provenance-bearing continuation engine for the
+MathGraph IGP24 v102 is a replayable, provenance-bearing continuation engine for the
 degree-24 inverse Galois problem competition.
 
 Its core record is:
@@ -14,48 +14,73 @@ named obstructions, and builds inverse routes toward desired `(24Tt, r)` pairs.
 Empirical routing objects are explicitly labelled and are not represented as
 verified mathematical theorems.
 
-## Outputs
+## Public contracts
 
-- `trials.jsonl`
-- `submission.txt`
-- `api_results.json`
-- `trial_certificates.csv`
-- `basin_laws.csv`
-- `obstructions.csv`
-- `inverse_routes.csv`
-- `lawbook.json`
+```python
+from mathgraph_igp24 import hash_poly, join_result, recommend, replay_law
 
-## Dry run
+rec = recommend(parent, (14010, 8), laws=lawbook.laws)
+child = replay_law(parent, rec.law)
 
-The default is one safe cycle without an API submission:
-
-```bash
-python mathgraph_igp24_v101_provenance_bearing_continuation_engine.py
+assert hash_poly(child) == rec.expected_child_hash
 ```
 
-Use a smaller candidate count for a quick smoke run:
+The package is organized by responsibility:
 
-```bash
-MATHGRAPH_CANDIDATES=5000 python mathgraph_igp24_v101_provenance_bearing_continuation_engine.py
+```text
+src/mathgraph_igp24/
+  memory.py         empirical outcomes
+  fingerprints.py  polynomial geometry
+  basins.py         provenance-only transitions
+  trials.py         mutation ledger and deterministic result joins
+  laws.py           success/failure law learning
+  obstructions.py   harmful continuation detection
+  router.py         evidence-bearing recommendations
+  replay.py         deterministic law application
+  submission.py     official artifact validation
+  api.py            eligibility-aware SAIR client
 ```
 
-## Continuous SAIR operation
+## Repository boundary
 
-```bash
-export SAIR_API_KEY="..."
-export SAIR_AUTORUN=1
-export MATHGRAPH_MAX_CYCLES=0
-python mathgraph_igp24_v101_provenance_bearing_continuation_engine.py
-```
+Git contains source, schemas, compact fixtures, tests, the build script, and
+the generated Colab runner. Runtime artifacts stay in Drive or external
+storage:
 
-Before every submission, the engine checks the live competition specification
-and team eligibility. It stops or backs off when the API reports that
-submission is blocked.
+- `trials.jsonl`, candidate pools, lawbooks
+- submissions and API results
+- trial certificates and run reports
 
-## Tests
+## Development
 
 ```bash
 python -m pip install -e ".[dev]"
 python -m pytest -q
 ```
 
+## Generate the Colab runner
+
+```bash
+python scripts/build_colab.py
+```
+
+This deterministically produces:
+
+```text
+dist/mathgraph_igp24_v102_colab.py
+dist/artifact_manifest.json
+```
+
+The manifest freezes the artifact hash and every embedded source hash. The
+generated runner can be uploaded to Colab as a single `.py` file.
+
+## Join an observed result
+
+```python
+observed = join_result(
+    submission_id,
+    polynomial_index,
+    {"status": "ok", "computed_label": "24T14010", "computed_r": 8},
+    ledger,
+)
+```

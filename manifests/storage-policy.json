@@ -1,0 +1,25 @@
+{
+  "schema_version": "1",
+  "git_tracked": [
+    "src/**/*.py",
+    "tests/**/*",
+    "schemas/*.json",
+    "scripts/build_colab.py",
+    "dist/mathgraph_igp24_v102_colab.py",
+    "dist/artifact_manifest.json"
+  ],
+  "external_artifacts": [
+    "trials.jsonl",
+    "candidate_pool.csv",
+    "lawbook.json",
+    "obstructions.json",
+    "transition_graph.csv",
+    "basin_memory.csv",
+    "submission.txt",
+    "api_results.json",
+    "trial_certificates.csv",
+    "run_report.json"
+  ],
+  "default_external_root": "/content/drive/MyDrive/MathGraph_IGP24",
+  "policy": "Generated search and verification artifacts are stored outside Git."
+}

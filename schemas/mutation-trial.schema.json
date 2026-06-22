@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mathgraph.dev/schemas/igp24/mutation-trial.schema.json",
+  "title": "MutationTrial",
+  "type": "object",
+  "required": [
+    "trial_id", "parent_hash", "child_hash", "parent_poly", "child_poly",
+    "source_basin", "destination_basin", "mutation_type", "mutation_parameters",
+    "submission_id", "polynomial_index", "status", "generator_version",
+    "random_seed", "trust_label", "timestamp"
+  ],
+  "properties": {
+    "trial_id": {"type": "string"},
+    "parent_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "child_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "parent_poly": {"type": "array", "minItems": 25, "maxItems": 25, "items": {"type": "integer"}},
+    "child_poly": {"type": "array", "minItems": 25, "maxItems": 25, "items": {"type": "integer"}},
+    "source_basin": {"type": "string"},
+    "destination_basin": {"type": "string"},
+    "mutation_type": {"type": "string"},
+    "mutation_parameters": {"type": "object"},
+    "target_pair": {"type": ["array", "null"], "minItems": 2, "maxItems": 2},
+    "pair_before": {"type": ["array", "null"], "minItems": 2, "maxItems": 2},
+    "pair_after": {"type": ["array", "null"], "minItems": 2, "maxItems": 2},
+    "submission_id": {"type": "string"},
+    "polynomial_index": {"type": "integer"},
+    "status": {"type": "string"},
+    "generator_version": {"type": "string"},
+    "random_seed": {"type": "integer"},
+    "trust_label": {"type": "string"},
+    "timestamp": {"type": "string"},
+    "outcome": {"type": "object"}
+  },
+  "additionalProperties": false
+}
+

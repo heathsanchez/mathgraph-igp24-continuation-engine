@@ -5,4 +5,7 @@ __pycache__/
 v101_provenance_bearing_continuation_engine/
 *.jsonl
 *.csv
-
+build/
+*.egg-info/
+artifacts/
+runs/
