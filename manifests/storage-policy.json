@@ -4,7 +4,8 @@
     "src/**/*.py",
     "tests/**/*",
     "schemas/*.json",
-    "scripts/build_colab.py",
+    "scripts/build_colab_artifact.py",
+    "scripts/run_v102_cycle.py",
     "dist/mathgraph_igp24_v102_colab.py",
     "dist/artifact_manifest.json"
   ],

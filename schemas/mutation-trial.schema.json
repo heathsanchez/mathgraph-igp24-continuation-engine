@@ -1,36 +1,23 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://mathgraph.dev/schemas/igp24/mutation-trial.schema.json",
-  "title": "MutationTrial",
+  "title": "MutationTrial v102",
   "type": "object",
-  "required": [
-    "trial_id", "parent_hash", "child_hash", "parent_poly", "child_poly",
-    "source_basin", "destination_basin", "mutation_type", "mutation_parameters",
-    "submission_id", "polynomial_index", "status", "generator_version",
-    "random_seed", "trust_label", "timestamp"
-  ],
+  "required": ["trial_id", "parent_hash", "child_hash", "parent_polynomial", "child_polynomial", "source_basin", "predicted_target_pair", "mutation_type", "mutation_parameters", "coefficient_delta", "fingerprint_before", "fingerprint_after", "fingerprint_delta", "generator_version", "random_seed", "cycle_id", "submission_id", "polynomial_index", "pair_before", "pair_after", "outcome_status", "api_label", "api_t", "api_r", "api_reason", "trust_label", "created_at", "updated_at"],
   "properties": {
-    "trial_id": {"type": "string"},
-    "parent_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "trial_id": {"type": "string"}, "parent_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "child_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "parent_poly": {"type": "array", "minItems": 25, "maxItems": 25, "items": {"type": "integer"}},
-    "child_poly": {"type": "array", "minItems": 25, "maxItems": 25, "items": {"type": "integer"}},
-    "source_basin": {"type": "string"},
-    "destination_basin": {"type": "string"},
-    "mutation_type": {"type": "string"},
-    "mutation_parameters": {"type": "object"},
-    "target_pair": {"type": ["array", "null"], "minItems": 2, "maxItems": 2},
-    "pair_before": {"type": ["array", "null"], "minItems": 2, "maxItems": 2},
-    "pair_after": {"type": ["array", "null"], "minItems": 2, "maxItems": 2},
-    "submission_id": {"type": "string"},
-    "polynomial_index": {"type": "integer"},
-    "status": {"type": "string"},
-    "generator_version": {"type": "string"},
-    "random_seed": {"type": "integer"},
-    "trust_label": {"type": "string"},
-    "timestamp": {"type": "string"},
-    "outcome": {"type": "object"}
-  },
-  "additionalProperties": false
+    "parent_polynomial": {"type": "array", "minItems": 25, "maxItems": 25, "items": {"type": "integer"}},
+    "child_polynomial": {"type": "array", "minItems": 25, "maxItems": 25, "items": {"type": "integer"}},
+    "source_basin": {"type": "string"}, "predicted_target_pair": {"type": ["array", "null"]},
+    "mutation_type": {"type": "string"}, "mutation_parameters": {"type": "object"},
+    "coefficient_delta": {"type": "array", "minItems": 25, "maxItems": 25},
+    "fingerprint_before": {"type": "array"}, "fingerprint_after": {"type": "array"}, "fingerprint_delta": {"type": "object"},
+    "generator_version": {"type": "string"}, "random_seed": {"type": "integer"}, "cycle_id": {"type": "string"},
+    "submission_id": {"type": "string"}, "polynomial_index": {"type": "integer"},
+    "pair_before": {"type": ["array", "null"]}, "pair_after": {"type": ["array", "null"]},
+    "outcome_status": {"type": "string"}, "api_label": {"type": "string"}, "api_t": {"type": ["integer", "null"]},
+    "api_r": {"type": ["integer", "null"]}, "api_reason": {"type": "string"}, "trust_label": {"type": "string"},
+    "created_at": {"type": "string"}, "updated_at": {"type": "string"}
+  }, "additionalProperties": false
 }
 

@@ -1,14 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://mathgraph.dev/schemas/igp24/lawbook.schema.json",
-  "title": "IGP24 LawBook",
-  "type": "object",
+  "title": "Provenance Basin Lawbook v102", "type": "object",
   "required": ["schema_version", "laws", "obstructions"],
   "properties": {
     "schema_version": {"type": "string"},
-    "laws": {"type": "array", "items": {"type": "object"}},
-    "obstructions": {"type": "array", "items": {"type": "object"}}
-  },
-  "additionalProperties": false
+    "laws": {"type": "array", "items": {"type": "object", "required": ["law_id", "source_basin", "target_basin", "target_pair", "mutation_type", "coefficient_deltas", "preconditions", "evidence", "success_rate", "lift_over_baseline", "matched_failure_count", "novelty_score", "trust_label", "version"]}},
+    "obstructions": {"type": "array", "items": {"$ref": "obstruction.schema.json"}}
+  }, "additionalProperties": false
 }
 

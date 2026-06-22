@@ -1,6 +1,6 @@
 # MathGraph IGP24 Continuation Engine
 
-MathGraph IGP24 v102 is a replayable, provenance-bearing continuation engine for the
+MathGraph IGP24 v102 — Provenance Lawbook Scoring Engine is a replayable, provenance-bearing continuation engine for the
 degree-24 inverse Galois problem competition.
 
 Its core record is:
@@ -61,7 +61,7 @@ python -m pytest -q
 ## Generate the Colab runner
 
 ```bash
-python scripts/build_colab.py
+python scripts/build_colab_artifact.py
 ```
 
 This deterministically produces:
@@ -74,6 +74,40 @@ dist/artifact_manifest.json
 The manifest freezes the artifact hash and every embedded source hash. The
 generated runner can be uploaded to Colab as a single `.py` file.
 
+In Colab:
+
+```python
+%run dist/mathgraph_igp24_v102_colab.py --root /content/drive/MyDrive/MathGraph_IGP24
+```
+
+The default is a dry cycle. Submission and polling are explicit:
+
+```python
+%env SAIR_SUBMIT=1
+%env SAIR_POLL=1
+%env SAIR_API_KEY=your_key_here
+%run dist/mathgraph_igp24_v102_colab.py
+```
+
+The key is read only from `SAIR_API_KEY` or an interactive `getpass` prompt.
+
+## Feedback cycle
+
+```text
+parent → frozen mutation parameters → child → durable pending trial
+       → submission_id + polynomial_index → API outcome
+       → observed trial → law/obstruction update → next recommendation
+```
+
+Every selected polynomial is written to the ledger before submission. API
+results join only on `submission_id + polynomial_index`; CSV adjacency is never
+treated as causal evidence. Mutation operators are seeded and replay from their
+stored parameters.
+
+The cycle portfolio targets 60% law replay/guidance, 25% basin-near variants,
+10% obstruction falsification, and 5% exploration when empirical laws exist.
+With an empty lawbook it falls back to deterministic atlas exploration.
+
 ## Join an observed result
 
 ```python
@@ -84,3 +118,7 @@ observed = join_result(
     ledger,
 )
 ```
+
+This engine does not guarantee leaderboard dominance. It supplies the durable,
+falsifiable feedback loop needed to compound empirical routing evidence across
+repeated submissions.

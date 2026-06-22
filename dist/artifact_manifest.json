@@ -1,22 +1,25 @@
 {
   "artifact": "mathgraph_igp24_v102_colab.py",
-  "artifact_sha256": "908810da898d752c13ae45ed275ab68c36c39119fe387db95d52510291db8223",
-  "builder": "scripts/build_colab.py",
-  "schema_version": "1",
+  "artifact_sha256": "fb37afa8c6812fd17b3e903c8a44dce7f7a4eb99968a41e0ebe8320a2d4450cc",
+  "builder": "scripts/build_colab_artifact.py",
+  "schema_version": "2",
   "source_hashes": {
-    "mathgraph_igp24/__init__.py": "42b7d774d75550dae38ad11d7609136f69cda6b13a5662638f8ab6ee194fd5ad",
-    "mathgraph_igp24/api.py": "eb877c0a8ab9192248f9aa33c4711bcb4976abd11d3eee63a45ded22e336f095",
-    "mathgraph_igp24/basins.py": "06eb84d8248eb2d6e71a54b3c57491a654debb17a13239d7d2a29b90c49c9655",
+    "mathgraph_igp24/__init__.py": "79a500ac274019b30b974c1347c26c07b76f5348ae8eabdd3af9ab16cb0b638c",
+    "mathgraph_igp24/api.py": "6eed7fdf23083a77caa64207672c9174e06f0551ce401e504bc354f6c6ce333c",
+    "mathgraph_igp24/basins.py": "a48b74815a7cf53371b856812bdb8bf5092b9ee247a2cea44da0fdb7b9c490b3",
     "mathgraph_igp24/fingerprints.py": "5ee37266b6a3bd556dadd022edbe4bef020e34c56b7e2d78719ef7c769702f66",
-    "mathgraph_igp24/lawbook.py": "6fafd72414bdc4e62b8a2b414a9ed7192ee6db7c84f358c2717861e8e1a50b62",
-    "mathgraph_igp24/laws.py": "38468c745e4f07686bc4111e0bfa917cecbadbf95a7f58a959fe5f13989c5374",
-    "mathgraph_igp24/memory.py": "1826990aca8f00f45bd5face5674c4ef5ec9a61ca2d21303cdec772dac56e5a4",
-    "mathgraph_igp24/models.py": "56fb4046a8ab5296f5d674272d0030b10382c0afcf01cfd49c9a44aa0610c1fa",
-    "mathgraph_igp24/obstructions.py": "f988d4cb1c9a5dfc13ae73bb91ede52f8599c5a127e660c20e6db84a74319003",
+    "mathgraph_igp24/lawbook.py": "b7de658ee01760adcb47596fe39d7ef1ad57822e21268d44b56f65b29f13f244",
+    "mathgraph_igp24/laws.py": "496367f71faaa74a85b25217f8eac6849e573189b9cd855d77aaf04f038dc422",
+    "mathgraph_igp24/memory.py": "55ae6720d117c821a31d751b40effedcd90c5eadf5c9bb850341be6ae6d94759",
+    "mathgraph_igp24/models.py": "2314e79a4c73f4bd545bd1737814bdb10e11dc879ce83e76482fbbb67981b11f",
+    "mathgraph_igp24/mutations.py": "a4a48aaa7157bd92427cac7e07a7bd6e31a98242851e61963f69641e4217d5a9",
+    "mathgraph_igp24/obstructions.py": "6100466eb8d3829c85bb0921debf1cafa1e4f0ee8b2a16e3623f8dfb8875a898",
     "mathgraph_igp24/polynomial.py": "fd1fd2283266af3bcf9813e601e479e438d2346b9d5aae1a0b8b6461fce66d7d",
+    "mathgraph_igp24/portfolio.py": "f60adeda7a0d7e72c942cd08efcfa08282fbc1fb0165470a267eceb08a9bdafd",
     "mathgraph_igp24/replay.py": "e87e6a1cef56762ef77dcdfef14b7d415950f4658f3e1bb4e2e30951906718cf",
-    "mathgraph_igp24/router.py": "2de88384e6badeb2c95b625a39a8a08a202ccb40a3b08e77c2d5e7e3af0f0819",
+    "mathgraph_igp24/router.py": "e327e12478296c08857c029758c44262c371e0eb9f03985799280374e8a5954d",
     "mathgraph_igp24/submission.py": "c9f1200fc7d41ca43638b67d08b1e27f10e078a17ab32cf55eb102e6f8a8b874",
-    "mathgraph_igp24/trials.py": "4d019bb2cd4357b77107ef4c1c1290398676673a40816af61f3bcaaad2cf3cbc"
+    "mathgraph_igp24/trials.py": "63f794812dfced64f4e4b3b7c3746ba90ef36220407c1ee46c4c5178837f8019",
+    "run_v102_cycle.py": "057308332a401d3ab4178fd9e3b63e432fef34fa8844ba0bec464dc4228e50dd"
   }
 }

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Obstruction v102", "type": "object",
+  "required": ["obstruction_id", "source_basin", "mutation_type", "harmful_pair", "feature_signature", "failure_count", "matched_success_count", "confidence", "avoided_by", "example_trial_ids", "trust_label"],
+  "properties": {
+    "obstruction_id": {"type": "string"}, "source_basin": {"type": "string"}, "mutation_type": {"type": "string"},
+    "harmful_pair": {"type": "array", "minItems": 2, "maxItems": 2}, "feature_signature": {"type": "string"},
+    "failure_count": {"type": "integer"}, "matched_success_count": {"type": "integer"}, "confidence": {"type": "number"},
+    "avoided_by": {"type": "array"}, "example_trial_ids": {"type": "array"}, "trust_label": {"type": "string"}
+  }, "additionalProperties": false
+}
+

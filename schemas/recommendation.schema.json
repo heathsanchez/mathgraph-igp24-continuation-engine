@@ -1,25 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://mathgraph.dev/schemas/igp24/recommendation.schema.json",
-  "title": "RouteRecommendation",
-  "type": "object",
-  "required": [
-    "recommendation_id", "parent_hash", "target_pair", "law",
-    "expected_child_hash", "expected_probability", "evidence",
-    "obstructions", "rationale", "trust_label"
-  ],
+  "title": "RouteRecommendation v102", "type": "object",
+  "required": ["recommendation_id", "parent_hash", "target_pair", "law", "coefficient_edits", "mutation_type", "mutation_parameters", "expected_child_hash", "expected_child_polynomial", "predicted_destination_basin", "target_pair_posterior", "confidence_interval", "support_count", "failure_count", "replay_evidence", "relevant_obstructions", "trust_label", "rationale"],
   "properties": {
-    "recommendation_id": {"type": "string"},
-    "parent_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "target_pair": {"type": "array", "minItems": 2, "maxItems": 2},
-    "law": {"type": "object"},
-    "expected_child_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "expected_probability": {"type": "number", "minimum": 0, "maximum": 1},
-    "evidence": {"type": "object"},
-    "obstructions": {"type": "array"},
-    "rationale": {"type": "array", "items": {"type": "string"}},
-    "trust_label": {"type": "string"}
-  },
-  "additionalProperties": false
+    "recommendation_id": {"type": "string"}, "parent_hash": {"type": "string"}, "target_pair": {"type": "array"},
+    "law": {"type": "object"}, "coefficient_edits": {"type": "array"}, "mutation_type": {"type": "string"},
+    "mutation_parameters": {"type": "object"}, "expected_child_hash": {"type": "string"},
+    "expected_child_polynomial": {"type": "array", "minItems": 25, "maxItems": 25}, "predicted_destination_basin": {"type": "string"},
+    "target_pair_posterior": {"type": "number"}, "confidence_interval": {"type": "array"}, "support_count": {"type": "integer"},
+    "failure_count": {"type": "integer"}, "replay_evidence": {"type": "object"}, "relevant_obstructions": {"type": "array"},
+    "trust_label": {"type": "string"}, "rationale": {"type": "array"}
+  }, "additionalProperties": false
 }
-
