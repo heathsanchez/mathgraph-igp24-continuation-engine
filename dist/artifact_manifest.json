@@ -1,6 +1,6 @@
 {
   "artifact": "mathgraph_igp24_v102_colab.py",
-  "artifact_sha256": "fb37afa8c6812fd17b3e903c8a44dce7f7a4eb99968a41e0ebe8320a2d4450cc",
+  "artifact_sha256": "cbafe1f895b80d130be84b365cd0ed97cffadcff3ab1184104efac8417a8efaa",
   "builder": "scripts/build_colab_artifact.py",
   "schema_version": "2",
   "source_hashes": {
@@ -20,6 +20,6 @@
     "mathgraph_igp24/router.py": "e327e12478296c08857c029758c44262c371e0eb9f03985799280374e8a5954d",
     "mathgraph_igp24/submission.py": "c9f1200fc7d41ca43638b67d08b1e27f10e078a17ab32cf55eb102e6f8a8b874",
     "mathgraph_igp24/trials.py": "63f794812dfced64f4e4b3b7c3746ba90ef36220407c1ee46c4c5178837f8019",
-    "run_v102_cycle.py": "057308332a401d3ab4178fd9e3b63e432fef34fa8844ba0bec464dc4228e50dd"
+    "run_v102_cycle.py": "5ccd8dc48dd75806e894a0adaf308a08c8748c0e9412d65e252d9b91ec640a43"
   }
 }

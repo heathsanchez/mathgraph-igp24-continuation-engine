@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_run_v102_cycle_dry_without_api_key(tmp_path):
-    env = dict(os.environ); env.pop("SAIR_API_KEY", None); env.pop("SAIR_SUBMIT", None); env["PYTHONPATH"] = str(ROOT / "src")
+    env = dict(os.environ); env.pop("SAIR_API_KEY", None); env.pop("SAIR_SUBMIT", None); env.pop("PYTHONPATH", None)
     completed = subprocess.run([sys.executable, "scripts/run_v102_cycle.py", "--root", str(tmp_path)],
                                cwd=ROOT, env=env, check=True, capture_output=True, text=True)
     report_paths = list(tmp_path.glob("v102_provenance_lawbook_scoring_engine/cycles/*/run_report.json"))

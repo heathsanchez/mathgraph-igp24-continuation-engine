@@ -4,11 +4,17 @@ import argparse
 import csv
 import json
 import os
+import sys
 from collections import Counter
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Sequence
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SRC_ROOT = REPO_ROOT / "src"
+if SRC_ROOT.exists() and str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 from mathgraph_igp24 import (
     LawBook, SairClient, TrialLedger, build_memory, build_portfolio, build_submission,
