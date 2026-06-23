@@ -4,6 +4,7 @@ from .basins import Basin, build_basin_atlas
 from .api import SairClient
 from .cycle import CycleConfig, run_cycle
 from .fingerprints import basin_id, fingerprint
+from .leaderboard import LeaderboardContext, PairValue, classify_pair, load_leaderboard_context
 from .lawbook import LawBook
 from .laws import learn_laws
 from .memory import EmpiricalMemory, build_memory
@@ -21,19 +22,25 @@ from .obstructions import learn_obstructions
 from .mutations import MutationResult, OPERATORS, apply_mutation, replay_mutation
 from .polynomial import hash_poly, normalize_poly, parse_poly, poly_to_line, valid_poly
 from .portfolio import PortfolioCandidate, build_portfolio, generate_candidates, select_portfolio
+from .portfolio_v2 import SurvivorCandidate, generate_survivor_candidates, select_survivor_portfolio
 from .replay import replay_law
 from .router import recommend
 from .submission import build_submission, read_submission, write_submission
+from .survivor_atlas import build_survivor_atlas, load_survivor_records
+from .survivor_router import Route, recommend_routes
 from .trials import TrialLedger, create_trial, join_result
 
 __all__ = [
     "Basin", "BasinLaw", "CycleConfig", "EmpiricalMemory", "Evidence", "LawBook", "MutationTrial", "SairClient",
-    "Obstruction", "Outcome", "Pair", "Polynomial", "RouteRecommendation", "TrialLedger",
+    "LeaderboardContext", "Obstruction", "Outcome", "Pair", "PairValue", "Polynomial", "Route",
+    "RouteRecommendation", "SurvivorCandidate", "TrialLedger",
     "MutationResult", "PortfolioCandidate", "OPERATORS",
     "basin_id", "build_basin_atlas", "build_memory", "build_submission", "create_trial",
     "fingerprint", "hash_poly", "join_result", "learn_laws", "learn_obstructions",
     "normalize_poly", "parse_poly", "poly_to_line", "read_submission", "recommend",
     "replay_law", "valid_poly", "write_submission",
     "apply_mutation", "replay_mutation", "build_portfolio", "generate_candidates", "select_portfolio",
-    "run_cycle",
+    "build_survivor_atlas", "classify_pair", "generate_survivor_candidates",
+    "load_leaderboard_context", "load_survivor_records", "recommend_routes",
+    "run_cycle", "select_survivor_portfolio",
 ]
