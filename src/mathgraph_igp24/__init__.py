@@ -2,6 +2,7 @@
 
 from .basins import Basin, build_basin_atlas
 from .api import SairClient
+from .cycle import CycleConfig, run_cycle
 from .fingerprints import basin_id, fingerprint
 from .lawbook import LawBook
 from .laws import learn_laws
@@ -26,7 +27,7 @@ from .submission import build_submission, read_submission, write_submission
 from .trials import TrialLedger, create_trial, join_result
 
 __all__ = [
-    "Basin", "BasinLaw", "EmpiricalMemory", "Evidence", "LawBook", "MutationTrial", "SairClient",
+    "Basin", "BasinLaw", "CycleConfig", "EmpiricalMemory", "Evidence", "LawBook", "MutationTrial", "SairClient",
     "Obstruction", "Outcome", "Pair", "Polynomial", "RouteRecommendation", "TrialLedger",
     "MutationResult", "PortfolioCandidate", "OPERATORS",
     "basin_id", "build_basin_atlas", "build_memory", "build_submission", "create_trial",
@@ -34,4 +35,5 @@ __all__ = [
     "normalize_poly", "parse_poly", "poly_to_line", "read_submission", "recommend",
     "replay_law", "valid_poly", "write_submission",
     "apply_mutation", "replay_mutation", "build_portfolio", "generate_candidates", "select_portfolio",
+    "run_cycle",
 ]

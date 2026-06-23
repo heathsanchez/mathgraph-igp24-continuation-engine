@@ -96,9 +96,10 @@ def select_portfolio(candidates: Sequence[PortfolioCandidate], limit: int = MAX_
 def build_portfolio(
     parents: Sequence[Polynomial], target_pair: Pair, laws: Sequence[BasinLaw] = (), obstructions: Sequence[Obstruction] = (),
     known_hashes: set[str] | None = None, ledger: TrialLedger | None = None, cycle_id: str = "cycle", seed: int = 0,
+    candidate_count: int = 2000,
 ) -> list[PortfolioCandidate]:
-    candidates = (generate_candidates(parents, target_pair, laws, obstructions, known_hashes, 1200, cycle_id, seed)
-                  if laws else fallback_atlas_candidates(parents, target_pair, 2000, cycle_id, seed))
+    candidates = (generate_candidates(parents, target_pair, laws, obstructions, known_hashes, candidate_count, cycle_id, seed)
+                  if laws else fallback_atlas_candidates(parents, target_pair, candidate_count, cycle_id, seed))
     selected = select_portfolio(candidates)
     if ledger is not None: ledger.append_many([candidate.trial for candidate in selected])
     return selected

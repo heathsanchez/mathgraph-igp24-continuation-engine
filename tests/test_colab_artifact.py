@@ -16,7 +16,6 @@ def test_colab_artifact_is_deterministic_and_runs_cycle(tmp_path):
     manifest = json.loads((ROOT / "dist/artifact_manifest.json").read_text())
     assert hashlib.sha256(first).hexdigest() == manifest["artifact_sha256"]
     env = dict(os.environ); env.pop("SAIR_API_KEY", None); env.pop("SAIR_SUBMIT", None)
-    subprocess.run([sys.executable, "-I", str(artifact), "--root", str(tmp_path)], cwd=ROOT, env=env,
+    subprocess.run([sys.executable, "-I", str(artifact), "--root", str(tmp_path), "--candidate-count", "2000"], cwd=ROOT, env=env,
                    check=True, capture_output=True, text=True)
-    assert list(tmp_path.glob("v102_provenance_lawbook_scoring_engine/cycles/*/submission.txt"))
-
+    assert list(tmp_path.glob("v102_provenance_cycle/cycles/*/submission.txt"))

@@ -36,6 +36,16 @@ def _materialize(name: str, parent: Polynomial, parameters: dict[str, Any], seed
     rng = random.Random(seed)
     if "edits" in parameters:
         return [dict(edit) for edit in parameters["edits"]], str(parameters.get("description", name))
+    aliases = {
+        "support_toggle": "support_add" if seed % 2 else "support_drop",
+        "coefficient_scale": "high_sparse_scale",
+        "even_lacunary": "even_lacunary_shift",
+        "center_peak": "center_mass_push",
+        "high_sparse": "high_sparse_perturb",
+        "transition_mutation": "basin_guided",
+        "local_noise": "random_exploration",
+    }
+    name = aliases.get(name, name)
     support = [index for index in range(24) if parent[index] != 0]
     zeros = [index for index in range(1, 24) if parent[index] == 0]
     if name == "center_mass_push":
@@ -45,6 +55,10 @@ def _materialize(name: str, parent: Polynomial, parameters: dict[str, Any], seed
         delta = int(parameters.get("delta", rng.choice([-8, -4, -2, 2, 4, 8])))
         if parent[0] + delta == 0: delta += 1
         return [{"index": 0, "delta": delta}], f"sweep constant coefficient by {delta}"
+    if name == "sign_flip":
+        choices = [index for index in support if index not in (0, 24)] or [0]
+        index = int(parameters.get("index", rng.choice(choices)))
+        return [{"index": index, "value": -parent[index]}], f"flip sign of a{index}"
     if name == "sparse_keep_shape":
         choices = support or [0]; index = int(parameters.get("index", rng.choice(choices)))
         delta = int(parameters.get("delta", rng.choice([-3, -1, 1, 3])))
@@ -87,9 +101,10 @@ def _materialize(name: str, parent: Polynomial, parameters: dict[str, Any], seed
 
 
 OPERATORS = (
-    "center_mass_push", "a0_sweep", "sparse_keep_shape", "support_add", "support_drop",
-    "even_lacunary_shift", "high_sparse_scale", "high_sparse_perturb", "basin_clone",
-    "basin_guided", "law_replay", "random_exploration",
+    "center_mass_push", "a0_sweep", "sign_flip", "support_toggle", "sparse_keep_shape",
+    "coefficient_scale", "basin_clone", "local_noise", "even_lacunary", "center_peak",
+    "high_sparse", "transition_mutation", "support_add", "support_drop", "even_lacunary_shift",
+    "high_sparse_scale", "high_sparse_perturb", "basin_guided", "law_replay", "random_exploration",
 )
 
 
@@ -103,4 +118,3 @@ def apply_mutation(parent: Sequence[int], name: str, parameters: dict[str, Any] 
 
 def replay_mutation(parent: Sequence[int], name: str, parameters: dict[str, Any]) -> Polynomial:
     return apply_mutation(parent, name, parameters, int(parameters.get("seed", 0))).child
-
